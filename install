@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -e
+
+help() {
+  echo "Usage:"
+  echo "  zmicro package install tig <args...>"
+  echo ""
+}
+
+install() {
+  pm install -y tig
+}
+
+core() {
+  if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    help
+    exit 0
+  fi
+
+  install
+  log::success "install tig success."
+}
+
+run() {
+  core $@
+}
+
+run $@
